@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "New window theming",
+  "version": "1.0",
+  "description": "Dynamic colorful firefox windows",
+
+  "icons": {
+    "48": "icon.png"
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "permissions": [
+    "tabs",
+    "theme"
+  ]
+}
