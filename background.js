@@ -38,6 +38,16 @@ function getNextTheme() {
     return THEMES[lastThemeIndex];
 }
 
-browser.windows.onCreated.addListener((window) => {
+function applyThemeToWindow(window) {
     browser.theme.update(window.id, getNextTheme());
-});
+}
+
+async function applyThemeToAllWindows() {
+    for (const window of await browser.windows.getAll()) {
+        applyThemeToWindow(window);
+    }
+}
+
+browser.windows.onCreated.addListener(applyThemeToWindow);
+browser.runtime.onStartup.addListener(applyThemeToAllWindows);
+browser.runtime.onInstalled.addListener(applyThemeToAllWindows);
