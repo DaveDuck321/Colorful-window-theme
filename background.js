@@ -1,31 +1,50 @@
 const THEMES = [
     {
         colors: {
-            frame: '#D7392C',
+            frame: '#ec5f67',
             tab_background_text: '#111',
         }
     },
     {
         colors: {
-            frame: '#CA6948',
+            frame: '#f99157',
             tab_background_text: '#111',
         }
     },
     {
         colors: {
-            frame: '#B8B565',
+            frame: '#fac863',
             tab_background_text: '#111',
         }
     },
     {
         colors: {
-            frame: '#3DB8B5',
+            frame: '#99c794',
             tab_background_text: '#111',
         }
     },
     {
         colors: {
-            frame: '#1F82BC',
+            frame: '#5fb3b3',
+            tab_background_text: '#111',
+        }
+    },
+
+    {
+        colors: {
+            frame: '#6699cc',
+            tab_background_text: '#111',
+        }
+    },
+    {
+        colors: {
+            frame: '#c594c5',
+            tab_background_text: '#111',
+        }
+    },
+    {
+        colors: {
+            frame: '#ab7967',
             tab_background_text: '#111',
         }
     },
