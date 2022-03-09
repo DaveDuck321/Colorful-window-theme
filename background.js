@@ -50,7 +50,7 @@ const THEMES = [
     },
 ];
 
-let lastThemeIndex = 0;
+let lastThemeIndex = Math.floor(Math.random() * THEMES.length);
 
 function getNextTheme() {
     lastThemeIndex = (lastThemeIndex + 1) % THEMES.length;
