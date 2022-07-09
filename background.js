@@ -42,12 +42,6 @@ const THEMES = [
             tab_background_text: '#111',
         }
     },
-    {
-        colors: {
-            frame: '#ab7967',
-            tab_background_text: '#111',
-        }
-    },
 ];
 
 let lastThemeIndex = Math.floor(Math.random() * THEMES.length);
