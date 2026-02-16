@@ -38,28 +38,35 @@ function getNextTheme() {
     return sortedThemes[0];
 }
 
-function applyThemeToWindow(window) {
-    const newTheme = getNextTheme();
-    browser.theme.update(window.id, newTheme.browserThemeObject);
-
-    newTheme.usage += 1;
-    newTheme.lastUsed = Date.now();
-    themeOfWindowID.set(window.id, newTheme);
+function applyTheme(windowId, theme) {
+    browser.theme.update(windowId, theme.browserThemeObject);
+    themeOfWindowID.set(windowId, theme);
+    theme.usage += 1;
+    theme.lastUsed = Date.now();
 }
 
-async function applyThemeToAllWindows() {
+async function applyThemesToAllWindows() {
     for (const window of await browser.windows.getAll()) {
-        applyThemeToWindow(window);
+        applyTheme(window.id, getNextTheme());
     }
 }
 
-function freeThemeOfDestroyedWindow(window_id) {
-    const theme = themeOfWindowID.get(window_id);
+function freeTheme(windowId) {
+    const theme = themeOfWindowID.get(windowId);
     theme.usage -= 1;
-    themeOfWindowID.delete(window_id);
+    themeOfWindowID.delete(windowId);
 }
 
-browser.windows.onCreated.addListener(applyThemeToWindow);
-browser.windows.onRemoved.addListener(freeThemeOfDestroyedWindow);
-browser.runtime.onStartup.addListener(applyThemeToAllWindows);
-browser.runtime.onInstalled.addListener(applyThemeToAllWindows);
+browser.windows.onCreated.addListener(window => applyTheme(window.id, getNextTheme()));
+browser.windows.onRemoved.addListener(freeTheme);
+browser.runtime.onStartup.addListener(applyThemesToAllWindows);
+browser.runtime.onInstalled.addListener(applyThemesToAllWindows);
+
+browser.runtime.onMessage.addListener(async (message) => {
+    if (message.action === 'setWindowColor') {
+        const { color } = message;
+        let window = await browser.windows.getCurrent()
+        freeTheme(window.id);
+        applyTheme(window.id, new BasicColorTheme(color))
+    }
+})
