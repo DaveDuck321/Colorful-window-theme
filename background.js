@@ -67,6 +67,7 @@ browser.runtime.onMessage.addListener(async (message) => {
         const { color } = message;
         let window = await browser.windows.getCurrent()
         freeTheme(window.id);
-        applyTheme(window.id, new BasicColorTheme(color))
+        let theme = ALL_THEMES.find(theme => theme.frame === color)
+        applyTheme(window.id, theme)
     }
 })
