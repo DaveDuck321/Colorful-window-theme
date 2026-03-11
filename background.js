@@ -1,30 +1,76 @@
 class BasicColorTheme {
-    constructor(frame, tab_background_text = '#111') {
+    constructor(frame, tone) {
         this.frame = frame;
-        this.tab_background_text = tab_background_text;
+        this.tone = tone;
         this.usage = 0;
         this.lastUsed = Math.random();
     }
 
     get browserThemeObject() {
+        const isDarkTone = this.tone === 'dark';
+        const selectedTabLightenAmount = isDarkTone ? 0.30 : 0.70;
+        const urlBarLightenAmount = isDarkTone ? 0.18 : 0.60;
+        const textColor = isDarkTone ? '#f5f5f5' : '#111';
+        const urlBarColor = lightenHexColor(this.frame, urlBarLightenAmount);
+        const selectedTabColor = lightenHexColor(this.frame, selectedTabLightenAmount);
+
         return {
             colors: {
                 frame: this.frame,
-                tab_background_text: this.tab_background_text,
+                tab_selected: selectedTabColor,
+                tab_background_text: textColor,
+                tab_line: 'transparent',
+                toolbar_field: urlBarColor,
+                toolbar_field_focus: urlBarColor,
+                toolbar_field_text: textColor,
+                toolbar_field_text_focus: textColor,
             }
         };
     }
 }
 
+function lightenHexColor(hexColor, amount) {
+    const hex = hexColor.replace('#', '');
+    const r = parseInt(hex.slice(0, 2), 16);
+    const g = parseInt(hex.slice(2, 4), 16);
+    const b = parseInt(hex.slice(4, 6), 16);
+
+    const lightenChannel = (channel) => Math.round(channel + (255 - channel) * amount);
+    const toHex = (value) => value.toString(16).padStart(2, '0');
+
+    return `#${toHex(lightenChannel(r))}${toHex(lightenChannel(g))}${toHex(lightenChannel(b))}`;
+}
+
 let themeOfWindowID = new Map();
 const ALL_THEMES = [
-    new BasicColorTheme('#ec5f67'),
-    new BasicColorTheme('#f99157'),
-    new BasicColorTheme('#fac863'),
-    new BasicColorTheme('#99c794'),
-    new BasicColorTheme('#5fb3b3'),
-    new BasicColorTheme('#6699cc'),
-    new BasicColorTheme('#c594c5'),
+    new BasicColorTheme('#f2a3a3', 'light'),
+    new BasicColorTheme('#f2bf8a', 'light'),
+    new BasicColorTheme('#f2df8a', 'light'),
+    new BasicColorTheme('#d6e38f', 'light'),
+    new BasicColorTheme('#9fd9a3', 'light'),
+    new BasicColorTheme('#8fd9c6', 'light'),
+    new BasicColorTheme('#8fd9e2', 'light'),
+    new BasicColorTheme('#9fc4e8', 'light'),
+    new BasicColorTheme('#a7b0f0', 'light'),
+    new BasicColorTheme('#c2a3e8', 'light'),
+    new BasicColorTheme('#e3a3e8', 'light'),
+    new BasicColorTheme('#e8a3c5', 'light'),
+    new BasicColorTheme('#d7bca5', 'light'),
+    new BasicColorTheme('#bfc7d1', 'light'),
+    new BasicColorTheme('#2a2a40', 'dark'),
+    new BasicColorTheme('#3d2525', 'dark'),
+    new BasicColorTheme('#3b321f', 'dark'),
+    new BasicColorTheme('#2a3d29', 'dark'),
+    new BasicColorTheme('#1d443d', 'dark'),
+    new BasicColorTheme('#223f52', 'dark'),
+    new BasicColorTheme('#24305b', 'dark'),
+    new BasicColorTheme('#39286b', 'dark'),
+    new BasicColorTheme('#502563', 'dark'),
+    new BasicColorTheme('#61274a', 'dark'),
+    new BasicColorTheme('#612a2c', 'dark'),
+    new BasicColorTheme('#4f4024', 'dark'),
+    new BasicColorTheme('#304522', 'dark'),
+    new BasicColorTheme('#1d1d1d', 'dark'),
 ];
 
 function getNextTheme() {
