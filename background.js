@@ -64,15 +64,12 @@ const LIGHT_THEMES = [
     new LightColorTheme('#a7b0f0'),
     new LightColorTheme('#c2a3e8'),
     new LightColorTheme('#e3a3e8'),
-    new LightColorTheme('#e8a3c5'),
-    new LightColorTheme('#d7bca5'),
-    new LightColorTheme('#bfc7d1'),
+    new LightColorTheme('#e8a3c5')
 ];
 
 const DARK_THEMES = [
     new DarkColorTheme('#2a2a40'),
     new DarkColorTheme('#3d2525'),
-    new DarkColorTheme('#3b321f'),
     new DarkColorTheme('#2a3d29'),
     new DarkColorTheme('#1d443d'),
     new DarkColorTheme('#223f52'),
@@ -81,7 +78,6 @@ const DARK_THEMES = [
     new DarkColorTheme('#502563'),
     new DarkColorTheme('#61274a'),
     new DarkColorTheme('#612a2c'),
-    new DarkColorTheme('#4f4024'),
     new DarkColorTheme('#304522'),
     new DarkColorTheme('#1d1d1d'),
 ];
