@@ -1,9 +1,10 @@
 class BasicColorTheme {
-    constructor(frame, tabBackgroundText, selectedTabLightenAmount, urlBarLightenAmount) {
+    constructor(frame, tabBackgroundText, selectedTabLightenAmount, urlBarLightenAmount, toolbarLightenAmount) {
         this.frame = frame;
         this.tabBackgroundText = tabBackgroundText;
         this.selectedTabLightenAmount = selectedTabLightenAmount;
         this.urlBarLightenAmount = urlBarLightenAmount;
+        this.toolbarLightenAmount = toolbarLightenAmount;
         this.usage = 0;
         this.lastUsed = Math.random();
     }
@@ -11,10 +12,12 @@ class BasicColorTheme {
     get browserThemeObject() {
         const urlBarColor = lightenHexColor(this.frame, this.urlBarLightenAmount);
         const selectedTabColor = lightenHexColor(this.frame, this.selectedTabLightenAmount);
+        const toolbarColor = lightenHexColor(this.frame, this.toolbarLightenAmount);
 
         return {
             colors: {
                 frame: this.frame,
+                toolbar: toolbarColor,
                 tab_selected: selectedTabColor,
                 tab_background_text: this.tabBackgroundText,
                 tab_line: 'transparent',
@@ -28,14 +31,14 @@ class BasicColorTheme {
 }
 
 class LightColorTheme extends BasicColorTheme {
-    constructor(frame, tabBackgroundText = '#111', selectedTabLightenAmount = 0.60, urlBarLightenAmount = 1) {
-        super(frame, tabBackgroundText, selectedTabLightenAmount, urlBarLightenAmount);
+    constructor(frame, tabBackgroundText = '#111', selectedTabLightenAmount = 0.60, urlBarLightenAmount = 1, toolbarLightenAmount = 0.3) {
+        super(frame, tabBackgroundText, selectedTabLightenAmount, urlBarLightenAmount, toolbarLightenAmount);
     }
 }
 
 class DarkColorTheme extends BasicColorTheme {
-    constructor(frame, tabBackgroundText = '#f5f5f5', selectedTabLightenAmount = 0.30, urlBarLightenAmount = 0.18) {
-        super(frame, tabBackgroundText, selectedTabLightenAmount, urlBarLightenAmount);
+    constructor(frame, tabBackgroundText = '#f5f5f5', selectedTabLightenAmount = 0.30, urlBarLightenAmount = 0.08, toolbarLightenAmount = 0.12) {
+        super(frame, tabBackgroundText, selectedTabLightenAmount, urlBarLightenAmount, toolbarLightenAmount);
     }
 }
 
