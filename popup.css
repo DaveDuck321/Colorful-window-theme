@@ -9,11 +9,71 @@ body {
     padding: 1em;
 }
 
+.popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: .5em;
+    gap: 10px;
+}
+
 h3 {
-    margin: 0 0 .5em 0;
+    margin: 0;
     font-size: 18px;
     font-weight: 600;
     color: #222;
+}
+
+.mode-toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #222;
+    user-select: none;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #c7c7c7;
+    border-radius: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.switch-slider:before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 3px;
+    top: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.switch input:checked + .switch-slider {
+    background-color: #444;
+}
+
+.switch input:checked + .switch-slider:before {
+    transform: translateX(14px);
 }
 
 .color-grid {
@@ -36,6 +96,10 @@ h3 {
     font-size: 16px;
     font-weight: 900;
     line-height: 1;
+}
+
+.color-button.mode-hidden {
+    display: none;
 }
 
 /* making them brighter in the pop-up because you can't really differentiate them properly when they're small and on a white backgound (color theory stuff ig) */

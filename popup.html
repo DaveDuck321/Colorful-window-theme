@@ -6,7 +6,16 @@
 </head>
 <body>
     <div class="popup-container">
-        <h3>Pick Window Color</h3>
+        <div class="popup-header">
+            <h3>Pick Window Color</h3>
+            <label class="mode-toggle-row" for="mode-toggle">
+                <span>Dark</span>
+                <span class="switch">
+                    <input id="mode-toggle" type="checkbox">
+                    <span class="switch-slider"></span>
+                </span>
+            </label>
+        </div>
         <div class="color-grid">
             <button class="color-button" data-color="#f2a3a3" style="background-color:#f2a3a3">a</button>
             <button class="color-button" data-color="#f2bf8a" style="background-color:#f2bf8a">a</button>
