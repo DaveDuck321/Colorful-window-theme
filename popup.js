@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     modeToggle.checked = activeMode === MODE_DARK;
     applyModeVisibility(colorButtons, activeMode);
+    applyPopupTheme(activeMode);
 
     modeToggle.addEventListener('change', async () => {
         const requestedMode = modeToggle.checked ? MODE_DARK : MODE_LIGHT;
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         modeToggle.checked = nextMode === MODE_DARK;
         applyModeVisibility(colorButtons, nextMode);
+        applyPopupTheme(nextMode);
     });
 
     colorButtons.forEach((button) => {
@@ -50,4 +52,8 @@ function applyModeVisibility(buttons, mode) {
         const isVisibleInMode = mode === MODE_DARK ? isDarkSwatch : !isDarkSwatch;
         button.classList.toggle('mode-hidden', !isVisibleInMode);
     });
+}
+
+function applyPopupTheme(mode) {
+    document.body.classList.toggle('popup-dark', mode === MODE_DARK);
 }

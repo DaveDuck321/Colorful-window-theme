@@ -1,8 +1,15 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     background: #fff;
+    color: #222;
+}
+
+body.popup-dark {
+    background: #242424;
+    color: #f2f2f2;
 }
 
 .popup-container {
@@ -13,7 +20,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
     gap: 10px;
 }
 
@@ -21,7 +28,7 @@ h3 {
     margin: 0;
     font-size: 18px;
     font-weight: 600;
-    color: #222;
+    color: inherit;
 }
 
 .mode-toggle-row {
@@ -30,7 +37,7 @@ h3 {
     gap: 6px;
     font-size: 12px;
     font-weight: 600;
-    color: #222;
+    color: inherit;
     user-select: none;
 }
 
@@ -69,7 +76,7 @@ h3 {
 }
 
 .switch input:checked + .switch-slider {
-    background-color: #444;
+    background-color: #767676;
 }
 
 .switch input:checked + .switch-slider:before {
@@ -97,9 +104,10 @@ h3 {
 
 .color-button.dark-swatch {
     filter: brightness(1.22) saturate(1.08);
+    border: solid 2px grey;
 }
 
 .color-button:hover {
     transform: scale(1.1);
-    border-color: #222;
+    border-color: grey;
 }
