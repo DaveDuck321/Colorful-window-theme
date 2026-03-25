@@ -1,10 +1,10 @@
 class BasicColorTheme {
   constructor(
-    frame,
-    tabBackgroundText,
-    selectedTabLightenAmount,
-    urlBarLightenAmount,
-    toolbarLightenAmount,
+      frame,
+      tabBackgroundText,
+      selectedTabLightenAmount,
+      urlBarLightenAmount,
+      toolbarLightenAmount,
   ) {
     this.frame = frame;
     this.tabBackgroundText = tabBackgroundText;
@@ -18,8 +18,8 @@ class BasicColorTheme {
   get browserThemeObject() {
     const urlBarColor = lightenHexColor(this.frame, this.urlBarLightenAmount);
     const selectedTabColor = lightenHexColor(
-      this.frame,
-      this.selectedTabLightenAmount,
+        this.frame,
+        this.selectedTabLightenAmount,
     );
     const toolbarColor = lightenHexColor(this.frame, this.toolbarLightenAmount);
 
@@ -29,7 +29,7 @@ class BasicColorTheme {
         toolbar: toolbarColor,
         tab_selected: selectedTabColor,
         tab_background_text: this.tabBackgroundText,
-        tab_line: "transparent",
+        tab_line: 'transparent',
         toolbar_field: urlBarColor,
         toolbar_field_focus: urlBarColor,
         toolbar_field_text: this.tabBackgroundText,
@@ -41,51 +41,52 @@ class BasicColorTheme {
 
 class LightColorTheme extends BasicColorTheme {
   constructor(
-    frame,
-    tabBackgroundText = "#111",
-    selectedTabLightenAmount = 0.6,
-    urlBarLightenAmount = 1,
-    toolbarLightenAmount = 0.3,
+      frame,
+      tabBackgroundText = '#111',
+      selectedTabLightenAmount = 0.6,
+      urlBarLightenAmount = 1,
+      toolbarLightenAmount = 0.3,
   ) {
     super(
-      frame,
-      tabBackgroundText,
-      selectedTabLightenAmount,
-      urlBarLightenAmount,
-      toolbarLightenAmount,
+        frame,
+        tabBackgroundText,
+        selectedTabLightenAmount,
+        urlBarLightenAmount,
+        toolbarLightenAmount,
     );
   }
 }
 
 class DarkColorTheme extends BasicColorTheme {
   constructor(
-    frame,
-    tabBackgroundText = "#f5f5f5",
-    selectedTabLightenAmount = 0.3,
-    urlBarLightenAmount = 0.08,
-    toolbarLightenAmount = 0.12,
+      frame,
+      tabBackgroundText = '#f5f5f5',
+      selectedTabLightenAmount = 0.3,
+      urlBarLightenAmount = 0.08,
+      toolbarLightenAmount = 0.12,
   ) {
     super(
-      frame,
-      tabBackgroundText,
-      selectedTabLightenAmount,
-      urlBarLightenAmount,
-      toolbarLightenAmount,
+        frame,
+        tabBackgroundText,
+        selectedTabLightenAmount,
+        urlBarLightenAmount,
+        toolbarLightenAmount,
     );
   }
 }
 
 function lightenHexColor(hexColor, amount) {
-  const hex = hexColor.replace("#", "");
+  const hex = hexColor.replace('#', '');
   const r = parseInt(hex.slice(0, 2), 16);
   const g = parseInt(hex.slice(2, 4), 16);
   const b = parseInt(hex.slice(4, 6), 16);
 
   const lightenChannel = (channel) =>
-    Math.round(channel + (255 - channel) * amount);
-  const toHex = (value) => value.toString(16).padStart(2, "0");
+      Math.round(channel + (255 - channel) * amount);
+  const toHex = (value) => value.toString(16).padStart(2, '0');
 
-  return `#${toHex(lightenChannel(r))}${toHex(lightenChannel(g))}${toHex(lightenChannel(b))}`;
+  return `#${toHex(lightenChannel(r))}${toHex(lightenChannel(g))}${
+      toHex(lightenChannel(b))}`;
 }
 
 function createThemePair(lightTheme, darkTheme) {
@@ -93,59 +94,35 @@ function createThemePair(lightTheme, darkTheme) {
     light: lightTheme,
     dark: darkTheme,
     usage: 0,
-    lastUsed: Math.random(),
+    lastUsed: Math.random()
   };
 }
 
 const THEME_PAIRS = [
   createThemePair(
-    new LightColorTheme("#f2a3a3"),
-    new DarkColorTheme("#2a2a40"),
-  ),
+      new LightColorTheme('#f2a3a3'), new DarkColorTheme('#2a2a40')),
   createThemePair(
-    new LightColorTheme("#f2bf8a"),
-    new DarkColorTheme("#3d2525"),
-  ),
+      new LightColorTheme('#f2bf8a'), new DarkColorTheme('#3d2525')),
   createThemePair(
-    new LightColorTheme("#f2df8a"),
-    new DarkColorTheme("#2a3d29"),
-  ),
+      new LightColorTheme('#f2df8a'), new DarkColorTheme('#2a3d29')),
   createThemePair(
-    new LightColorTheme("#d6e38f"),
-    new DarkColorTheme("#1d443d"),
-  ),
+      new LightColorTheme('#d6e38f'), new DarkColorTheme('#1d443d')),
   createThemePair(
-    new LightColorTheme("#9fd9a3"),
-    new DarkColorTheme("#223f52"),
-  ),
+      new LightColorTheme('#9fd9a3'), new DarkColorTheme('#223f52')),
   createThemePair(
-    new LightColorTheme("#8fd9c6"),
-    new DarkColorTheme("#24305b"),
-  ),
+      new LightColorTheme('#8fd9c6'), new DarkColorTheme('#24305b')),
   createThemePair(
-    new LightColorTheme("#8fd9e2"),
-    new DarkColorTheme("#39286b"),
-  ),
+      new LightColorTheme('#8fd9e2'), new DarkColorTheme('#39286b')),
   createThemePair(
-    new LightColorTheme("#9fc4e8"),
-    new DarkColorTheme("#502563"),
-  ),
+      new LightColorTheme('#9fc4e8'), new DarkColorTheme('#502563')),
   createThemePair(
-    new LightColorTheme("#a7b0f0"),
-    new DarkColorTheme("#61274a"),
-  ),
+      new LightColorTheme('#a7b0f0'), new DarkColorTheme('#61274a')),
   createThemePair(
-    new LightColorTheme("#c2a3e8"),
-    new DarkColorTheme("#612a2c"),
-  ),
+      new LightColorTheme('#c2a3e8'), new DarkColorTheme('#612a2c')),
   createThemePair(
-    new LightColorTheme("#e3a3e8"),
-    new DarkColorTheme("#304522"),
-  ),
+      new LightColorTheme('#e3a3e8'), new DarkColorTheme('#304522')),
   createThemePair(
-    new LightColorTheme("#e8a3c5"),
-    new DarkColorTheme("#1d1d1d"),
-  ),
+      new LightColorTheme('#e8a3c5'), new DarkColorTheme('#1d1d1d')),
 ];
 
 const THEME_PAIR_BY_FRAME = new Map();
@@ -154,9 +131,9 @@ for (const themePair of THEME_PAIRS) {
   THEME_PAIR_BY_FRAME.set(themePair.dark.frame, themePair);
 }
 
-const MODE_STORAGE_KEY = "colorMode";
-const MODE_LIGHT = "light";
-const MODE_DARK = "dark";
+const MODE_STORAGE_KEY = 'colorMode';
+const MODE_LIGHT = 'light';
+const MODE_DARK = 'dark';
 
 let themePairOfWindowID = new Map();
 let currentMode = MODE_LIGHT;
@@ -238,24 +215,24 @@ browser.runtime.onInstalled.addListener(applyThemesToAllWindows);
 browser.runtime.onMessage.addListener(async (message) => {
   await modeStateReady;
 
-  if (message.action === "getColorMode") {
-    return { mode: currentMode };
+  if (message.action === 'getColorMode') {
+    return {mode: currentMode};
   }
 
-  if (message.action === "setColorMode") {
+  if (message.action === 'setColorMode') {
     const requestedMode = message.mode === MODE_DARK ? MODE_DARK : MODE_LIGHT;
     const didModeChange = requestedMode !== currentMode;
     currentMode = requestedMode;
-    await browser.storage.local.set({ [MODE_STORAGE_KEY]: currentMode });
+    await browser.storage.local.set({[MODE_STORAGE_KEY]: currentMode});
 
     if (didModeChange) {
       await reapplyCurrentModeToAllWindows();
     }
-    return { mode: currentMode };
+    return {mode: currentMode};
   }
 
-  if (message.action === "setWindowColor") {
-    const { color } = message;
+  if (message.action === 'setWindowColor') {
+    const {color} = message;
     let window = await browser.windows.getCurrent();
     let themePair = THEME_PAIR_BY_FRAME.get(color);
     freeTheme(window.id);
