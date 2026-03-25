@@ -1,24 +1,91 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     background: #fff;
+    color: #222;
+}
+
+body.popup-dark {
+    background: #242424;
+    color: #f2f2f2;
 }
 
 .popup-container {
     padding: 1em;
 }
 
+.popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5em;
+    gap: 10px;
+}
+
 h3 {
-    margin: 0 0 .5em 0;
+    margin: 0;
     font-size: 18px;
     font-weight: 600;
-    color: #222;
+    color: inherit;
+}
+
+.mode-toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: inherit;
+    user-select: none;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.switch-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background-color: #c7c7c7;
+    border-radius: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.switch-slider:before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    left: 3px;
+    top: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.switch input:checked + .switch-slider {
+    background-color: #767676;
+}
+
+.switch input:checked + .switch-slider:before {
+    transform: translateX(14px);
 }
 
 .color-grid {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 8px;
 }
 
@@ -31,7 +98,16 @@ h3 {
     transition: all 0.2s;
 }
 
+.color-button.mode-hidden {
+    display: none;
+}
+
+.color-button.dark-swatch {
+    filter: brightness(1.22) saturate(1.08);
+    border: solid 2px grey;
+}
+
 .color-button:hover {
     transform: scale(1.1);
-    border-color: #222;
+    border-color: grey;
 }

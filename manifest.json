@@ -15,7 +15,8 @@
 
   "permissions": [
     "tabs",
-    "theme"
+    "theme",
+    "storage"
   ],
 
   "browser_action": {
